@@ -6,4 +6,3 @@ Courses:
 
 - Programming in JavaScript
 - Introduction to Web Development
-https://we.tl/t-sjqR0ElPG7
