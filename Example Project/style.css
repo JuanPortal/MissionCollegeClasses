@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(0deg, #000 0%, #bd1a7c 100%);
+    color: #fff;
+    gap: 30px;
+}
+
+input {
+    text-align: center;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid #000;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.copied-text {
+    width: 300px;
+    height: 45px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 2px solid #000;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
