@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CS112 Mobule 2 Lab Exercises Part 2</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="jumbotron text-center py-3">
+      <h1>Module 2 Lab Exercises Part 2</h1>
+      <p>Use what you learned in the reading and lecture to complete the following exercises. All events and JavaScript should be in script tags, no in-line events or JavaScript should be used.</p>
+      <p>Event handler functions should all be anonymous. If additional functions are required, they will be noted in the notes area for each part.</p>
+      
+    </div>
+
+    <!-- Part 1 -->
+    <div class="container mb-5">
+      <div class="jumbotron py-3">
+        <h2>Part 1</h2>
+        <p class="text-muted">Create a text appender that adds (appends) text to the blue box each time some text is entered and the Append button is clicked. After each append, clear out the text box so new text can be entered.</p><hr/>
+        
+        <form>
+          <div class="form-row">
+            <div class="col-sm-9">
+              <input id='part1Input' type="text" class="form-control" placeholder="Enter some text to append">
+            </div>
+            <div class="col-sm-3">
+              <button id='part1Button' type="button" class="btn btn-primary w-100">Append</button>
+            </div>
+          </div>
+        </form>
+        <div id='part1Text' class="alert alert-primary mt-3">Appended Text:&nbsp;</div>
+        <script>
+          // Retrieve the entered text from the dom and append it to the blue box using string concatenation
+          // You can use the .innerHTML property along with the += assignment operator to append the text.
+          // Finally, clear out the text box so new text can be entered.
+
+          // Your code for this part goes here
+
+          const part1Input = document.getElementById('part1Input')
+          const part1Text = document.getElementById('part1Text')
+          const part1Button = document.getElementById('part1Button')
+
+          part1Button.addEventListener('click', () => {
+            part1Text.innerText += part1Input.value
+            part1Input.value = ''
+          })
+          
+
+        </script>
+      </div>
+    </div>
+
+    <!-- Part 2 -->
+    <div class="container mb-5">
+      <div class="jumbotron py-3">
+        <h2>Part 2</h2>
+        <p class="text-muted">Create a simple calculator that adds two real numbers (fractional) and outputs the result in the green box. Don't worry about error checking at this point. The output should read Result = #</p><hr/>
+        
+        <form>
+          <div class="form-row">
+            <div class="col-sm-4">
+              <input id='part2Number1' type="text" class="form-control" placeholder="Num">
+            </div>
+            <div class="col-sm-2 text-center">
+              <h4><span class="badge badge-light mt-1 pt-1">+</span></h4>
+            </div>
+            <div class="col-sm-4">
+              <input id='part2Number2' type="text" class="form-control" placeholder="Num"/>
+            </div>
+            <div class="col-sm-2">
+              <button id='part2Button' type="button" class="btn btn-primary mb-3 w-100">Add</button>
+            </div>
+          </div>
+        </form>
+        <div id='part2Result' class="alert alert-success">Result =</div>
+        <script>
+          // Create a sum function that accepts the two numbers, converts them to a number type (parseFloat())
+          // and returns the value for you to use to output to the box.
+          
+          // Your code for this part goes here
+          
+          const part2Number1 = document.getElementById('part2Number1')
+          const part2Number2 = document.getElementById('part2Number2')
+          const part2Result = document.getElementById('part2Result')
+          const part2Button = document.getElementById('part2Button')
+
+          function addTwoNumbers(number1, number2) {
+            return parseFloat(number1) + parseFloat(number2)
+          }
+
+          part2Button.addEventListener('click', () => {
+            part2Result.innerText = 'Result = ' + addTwoNumbers(part2Number1.value, part2Number2.value)
+          })
+          
+        </script>
+      </div>
+    </div>
+
+
+    <!-- Part 3 -->
+    <div class="container mb-5">
+      <div class="jumbotron py-3">
+        <h2>Part 3</h2>
+        <p class="text-muted">Create a total calculator based on a tax rate and output the result to the result box. For example, if the price is 9.99 and the rate is 9.5, the total will be 9.99 * (1 + (9.5/100)) = $10.94. Only output the final total.</p><hr/>
+        
+        <form>
+          <div class="form-row">
+            <div class="col-sm-5">
+              <input id='part3Price' type="text" class="form-control" placeholder="Price">
+            </div>
+            <div class="col-sm-3">
+              <input id='part3TaxRate' type="text" class="form-control" placeholder="Tax Rate %">
+            </div>
+            <div class="col-sm-4">
+              <button id='part3Button' type="button" class="btn btn-primary">Calculate Total</button>
+            </div>
+          </div>
+        </form>
+        <div id='part3Total' class="alert alert-success mt-3">Total =</div>
+        <script>
+          // Retrieve the price and tax from the dom and convert them to real numbers (parseFloat()).
+          // Create a function that accepts the price and tax rate as numbers and returns the total.
+          // display the total in the result box. You can use the .toFixed() function to round a number.
+          // For example total.toFixed(2);
+
+          // Your code for this part goes here
+
+          const part3Price = document.getElementById('part3Price')
+          const part3TaxRate = document.getElementById('part3TaxRate')
+          const part3Button = document.getElementById('part3Button')
+          const part3Total = document.getElementById('part3Total')
+
+          function taxCalculator(price, taxRate) {
+            return (parseFloat(price) * (1 + parseFloat(taxRate)/100)).toFixed(2)
+          }
+
+          part3Button.addEventListener('click', () => {
+            part3Total.innerText = 'Total = ' + taxCalculator(part3Price.value, part3TaxRate.value)
+          })
+
+        </script>
+      </div>
+    </div>
+
+
+    <!-- Part 4 -->
+    <div class="container mb-5">
+      <div class="jumbotron py-3">
+        <h2>Part 4</h2>
+        <p class="text-muted">Create a simple counter that either adds one to the value displayed or subtracts one based on the Add or Subtract button clicked.</p><hr/>
+        
+        <form>
+          <div class="form-row">
+            <div class="col-sm-5">
+              <button id='part4Add' type="button" class="btn btn-primary p-2 w-100">Add</button>
+            </div>
+            <div class="col-sm-2">
+              <div id='part4Value' class="alert alert-primary p-2 text-center">0</div>
+            </div>
+            <div class="col-sm-5">
+              <button id='part4Subtract' type="button" class="btn btn-primary p-2 w-100">Subtract</button>
+            </div>
+          </div>
+        </form>
+
+        <script>
+          // You will need to create a global var to hold the current counter. Set it to 0 to begin with.
+          // For each of the buttons, either increment or decrement the counter based on the button that
+          // is clicked then output the counter to the DOM.
+
+          // Your code for this part goes here
+
+          const part4Value = document.getElementById('part4Value')
+          const part4Add = document.getElementById('part4Add')
+          const part4Subtract = document.getElementById('part4Subtract')
+          let counter = 0
+
+          function add() {
+            return counter++
+          }
+
+          function subtract() {
+            return counter--
+          }
+
+          part4Add.addEventListener('click', () => {
+            add()
+            part4Value.innerText = counter
+          })
+
+          part4Subtract.addEventListener('click', () => {
+            subtract()
+            part4Value.innerText = counter
+          })
+          
+        </script>
+      </div>
+    </div>
+
+
+    <!-- Part 5 -->
+    <div class="container mb-5">
+      <div class="jumbotron py-3">
+        <h2>Part 5</h2>
+        <p class="text-muted">Create a calculator to calculate the area of a circle based on the radius input. The formula for the area of a circle is π * r<sup>2</sup></p><hr/>
+        
+        <form>
+          <div class="form-row">
+            <div class="col-sm-3 text-right">
+              <h4><span class="badge badge-primary mt-1 pt-1">Radius <sub>r</sub> = </span></h4>
+            </div>
+            <div class="col-sm-5">
+              <input id='part5Radius' id="radius" type="text" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+              <button id='part5Button' type="button" class="btn btn-primary mb-3 w-100">Calculate Area</button>
+            </div>
+          </div>
+        </form>
+        <div  id='part5Area' class="alert alert-success">Area of circle =</div>
+        <script>
+          // Create a circleArea function that accepts the radius as a number, calculates the area and returns the result.
+          // You can get the value of pi with Math.PI and you can raise a number to a power using
+          // Math.pow(n, p) where n is raised to power p
+          // Finally, display the returned result in the result box.
+          
+          // Your code for this part goes here
+
+          const part5Radius = document.getElementById('part5Radius')
+          const part5Button = document.getElementById('part5Button')
+          const part5Area = document.getElementById('part5Area')
+
+          function calculateArea(radius) {
+            return (Math.PI*Math.pow(parseFloat(radius), 2)).toFixed(2)
+          }
+
+          part5Button.addEventListener('click', () => {
+            part5Area.innerText = 'Area of circle = ' + calculateArea(part5Radius.value)
+          })
+
+        </script>
+      </div>
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+    <!-- Popper needed for some Bootstrap components -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
